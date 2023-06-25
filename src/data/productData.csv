@@ -1,0 +1,5 @@
+productId,productName,inventoryStatus,mrp,discount,maxQuantity
+a,Cooker,AVAILABLE,3200,10,200
+b,Iphone 14,OUT_OF_STOCK,70000,2,0
+c,Keychain,AVAILABLE,20,0,5000
+d,Bottle,AVAILABLE,80,5,1530
