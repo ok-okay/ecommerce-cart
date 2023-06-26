@@ -3,6 +3,8 @@ package repositories;
 import models.InventoryStatus;
 import models.Pojo_Product;
 import models.Pojo_User;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +24,7 @@ public class ProductRepository {
         }
         return searchResults;
     }
+    @Nullable
     public static Pojo_Product getProductFromProductId(String productId){
         for(int i = 0; i<productsList.size(); i++){
             if(productsList.get(i).getProductId().equals(productId)){
@@ -30,6 +33,7 @@ public class ProductRepository {
         }
         return null;
     }
+    @Nullable
     public static Integer getProductQuantity(String productId){
         for(int i = 0; i<productsList.size(); i++){
             if(productsList.get(i).getProductId().equals(productId)){

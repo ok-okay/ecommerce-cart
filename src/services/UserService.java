@@ -1,6 +1,7 @@
 package services;
 
 import models.Pojo_User;
+import org.jetbrains.annotations.Nullable;
 import repositories.UserRepository;
 
 import java.security.MessageDigest;
@@ -43,6 +44,7 @@ public class UserService {
         }
         return false;
     }
+    @Nullable
     public static Long validateSession(String sessionId){
         Pojo_User user = UserRepository.findUserBySessionId(sessionId);
         if(user!=null){

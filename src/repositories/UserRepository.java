@@ -1,6 +1,7 @@
 package repositories;
 
 import models.Pojo_User;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ public class UserRepository {
         Thread t = new Thread(writer);
         t.start();
     }
+    @Nullable
     public static Pojo_User findUserByEmail(String email){
         for(int i = 0; i<usersList.size(); i++){
             Pojo_User user = usersList.get(i);
@@ -40,6 +42,7 @@ public class UserRepository {
         Thread t = new Thread(writer);
         t.start();
     }
+    @Nullable
     public static Pojo_User findUserBySessionId(String sessionId){
         for(int i = 0; i<usersList.size(); i++){
             Pojo_User user = usersList.get(i);

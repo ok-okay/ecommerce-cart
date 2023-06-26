@@ -1,5 +1,6 @@
 package controllers;
 
+import org.jetbrains.annotations.Nullable;
 import services.UserService;
 
 public class UserController {
@@ -24,6 +25,7 @@ public class UserController {
             System.out.println(e.getMessage());
         }
     }
+    @Nullable
     public static Long validateSession(String sessionId){
         return UserService.validateSession(sessionId);
     }

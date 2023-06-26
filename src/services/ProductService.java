@@ -1,6 +1,7 @@
 package services;
 
 import models.Pojo_Product;
+import org.jetbrains.annotations.Nullable;
 import repositories.ProductRepository;
 
 import java.util.ArrayList;
@@ -36,9 +37,11 @@ public class ProductService {
             System.out.println();
         }
     }
+    @Nullable
     public static Pojo_Product getProductFromProductId(String productId){
         return ProductRepository.getProductFromProductId(productId);
     }
+    @Nullable
     public static Integer getProductQuantity(String productId){
         return ProductRepository.getProductQuantity(productId);
     }

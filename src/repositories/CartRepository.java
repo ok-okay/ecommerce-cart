@@ -1,6 +1,7 @@
 package repositories;
 
 import models.Pojo_Cart;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class CartRepository {
         }
         return userCart;
     }
+    @Nullable
     public static Pojo_Cart getItemByUserIdProductId(long userId, String productId){
         for(int i = 0; i<cartList.size(); i++){
             Pojo_Cart cartItem = cartList.get(i);
