@@ -21,6 +21,12 @@ public class ProductService {
     public static void filterProducts(){
         System.out.println("Enter searchTerm");
         String searchTerm = scanner.nextLine();
+
+        if(!ProductRepository.isResourceLoadStatus()){
+            System.out.println("ProductsDB is still loading, try after a while");
+            System.exit(0);
+        }
+
         ArrayList<Pojo_Product> searchResults = ProductRepository.filterProductsByName(searchTerm);
 
         if(searchResults.isEmpty()){
@@ -38,11 +44,19 @@ public class ProductService {
         }
     }
     @Nullable
-    public static Pojo_Product getProductFromProductId(String productId){
-        return ProductRepository.getProductFromProductId(productId);
+    public static Integer getProductQuantity(String productId){
+        if(!ProductRepository.isResourceLoadStatus()){
+            System.out.println("ProductsDB is still loading, try after a while");
+            System.exit(0);
+        }
+        return ProductRepository.getProductQuantity(productId);
     }
     @Nullable
-    public static Integer getProductQuantity(String productId){
-        return ProductRepository.getProductQuantity(productId);
+    public static Pojo_Product getProductFromProductId(String productId){
+        if(!ProductRepository.isResourceLoadStatus()){
+            System.out.println("ProductsDB is still loading, try after a while");
+            System.exit(0);
+        }
+        return ProductRepository.getProductFromProductId(productId);
     }
 }

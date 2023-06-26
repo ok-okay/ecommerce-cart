@@ -66,6 +66,11 @@ public class CartService {
         System.out.println("Enter product ID");
         String productId = scanner.nextLine();
 
+        if(!CartRepository.isResourceLoadStatus()){
+            System.out.println("CartDB is still loading, try after a while");
+            System.exit(0);
+        }
+
         Pojo_Cart cartItem = CartRepository.getItemByUserIdProductId(userId, productId);
         if(cartItem!=null){
             throw new IllegalArgumentException("Product already exists in cart, try update or delete");
@@ -78,6 +83,10 @@ public class CartService {
     }
     public static void listCartItems(){
         long userId = getUserIdFromSessionId();
+        if(!CartRepository.isResourceLoadStatus()){
+            System.out.println("CartDB is still loading, try after a while");
+            System.exit(0);
+        }
         ArrayList<Pojo_Cart> userCart = CartRepository.filterCartByUserId(userId);
         if(userCart.size()==0){
             System.out.println("No items in cart, try adding using add to cart");
@@ -103,6 +112,11 @@ public class CartService {
         System.out.println("Enter product ID");
         String productId = scanner.nextLine();
 
+        if(!CartRepository.isResourceLoadStatus()){
+            System.out.println("CartDB is still loading, try after a while");
+            System.exit(0);
+        }
+
         Pojo_Cart cartItem = CartRepository.getItemByUserIdProductId(userId, productId);
         if(cartItem==null){
             throw new IllegalArgumentException("Product does not exist in cart, try add product");
@@ -117,6 +131,11 @@ public class CartService {
         long userId = getUserIdFromSessionId();
         System.out.println("Enter product ID");
         String productId = scanner.nextLine();
+
+        if(!CartRepository.isResourceLoadStatus()){
+            System.out.println("CartDB is still loading, try after a while");
+            System.exit(0);
+        }
 
         Pojo_Cart itemToRemove = CartRepository.getItemByUserIdProductId(userId, productId);
         if(itemToRemove==null){

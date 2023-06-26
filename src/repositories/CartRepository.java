@@ -9,6 +9,16 @@ import java.util.ArrayList;
 public class CartRepository {
     private static ArrayList<Pojo_Cart> cartList = new ArrayList<Pojo_Cart>();
     private final static String filePath = new File("src/data/cartData.csv").getAbsolutePath();
+    private static boolean resourceLoadStatus = false;
+
+    public static boolean isResourceLoadStatus() {
+        return resourceLoadStatus;
+    }
+
+    public static void setResourceLoadStatus(boolean resourceLoadStatus) {
+        CartRepository.resourceLoadStatus = resourceLoadStatus;
+    }
+
     private static final SerializeAndWrite writer = new SerializeAndWrite();
     public static void addToCart(long userId, String productId, int quantity){
         Pojo_Cart cartItem = new Pojo_Cart(userId, productId, quantity);

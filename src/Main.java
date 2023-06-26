@@ -12,16 +12,19 @@ public class Main {
     static class LoadProducts extends Thread {
         public void run() {
             ProductRepository.loadProducts();
+            ProductRepository.setResourceLoadStatus(true);
         }
     }
     static class LoadUsers extends Thread {
         public void run() {
             UserRepository.loadUsers();
+            UserRepository.setResourceLoadStatus(true);
         }
     }
     static class LoadCart extends Thread {
         public void run() {
             CartRepository.loadCart();
+            CartRepository.setResourceLoadStatus(true);
         }
     }
     public static void main(String[] args) {

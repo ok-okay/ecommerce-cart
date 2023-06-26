@@ -11,6 +11,15 @@ import java.util.ArrayList;
 public class UserRepository {
     private static ArrayList<Pojo_User> usersList = new ArrayList<Pojo_User>();
     private final static String filePath = new File("src/data/userData.csv").getAbsolutePath();
+    private static boolean resourceLoadStatus = false;
+    public static boolean isResourceLoadStatus() {
+        return resourceLoadStatus;
+    }
+
+    public static void setResourceLoadStatus(boolean resourceLoadStatus) {
+        UserRepository.resourceLoadStatus = resourceLoadStatus;
+    }
+
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final SerializeAndWrite writer = new SerializeAndWrite();
     public static void addToUsersList(String email, String firstName, String lastName, String password){

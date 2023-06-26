@@ -2,8 +2,6 @@ package repositories;
 
 import models.InventoryStatus;
 import models.Pojo_Product;
-import models.Pojo_User;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
@@ -15,6 +13,16 @@ import java.util.ArrayList;
 public class ProductRepository {
     private final static String filePath = new File("src/data/productData.csv").getAbsolutePath();
     private static ArrayList<Pojo_Product> productsList = new ArrayList<Pojo_Product>();
+    private static boolean resourceLoadStatus = false;
+
+    public static boolean isResourceLoadStatus() {
+        return resourceLoadStatus;
+    }
+
+    public static void setResourceLoadStatus(boolean resourceLoadStatus) {
+        ProductRepository.resourceLoadStatus = resourceLoadStatus;
+    }
+
     public static ArrayList<Pojo_Product> filterProductsByName(String searchTerm){
         ArrayList<Pojo_Product> searchResults = new ArrayList<Pojo_Product>();
         for(int i = 0; i<productsList.size(); i++){

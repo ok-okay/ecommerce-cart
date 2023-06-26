@@ -46,6 +46,10 @@ public class UserService {
     }
     @Nullable
     public static Long validateSession(String sessionId){
+        if(!UserRepository.isResourceLoadStatus()){
+            System.out.println("UsersDB is still loading, try after a while");
+            System.exit(0);
+        }
         Pojo_User user = UserRepository.findUserBySessionId(sessionId);
         if(user!=null){
             LocalDateTime currentTime = LocalDateTime.now(ZoneOffset.UTC);
@@ -77,6 +81,11 @@ public class UserService {
             throw new IllegalArgumentException("Enter a valid email ID");
         }
 
+        if(!UserRepository.isResourceLoadStatus()){
+            System.out.println("UsersDB is still loading, try after a while");
+            System.exit(0);
+        }
+
         Pojo_User user = UserRepository.findUserByEmail(email);
         if(user==null){
             throw new IllegalArgumentException("No user found, use the signUp path instead");
@@ -102,6 +111,11 @@ public class UserService {
         String email = scanner.nextLine();
         if(!emailValidityCheck(email)){
             throw new IllegalArgumentException("Enter a valid email ID");
+        }
+
+        if(!UserRepository.isResourceLoadStatus()){
+            System.out.println("UsersDB is still loading, try after a while");
+            System.exit(0);
         }
 
         if(UserRepository.findUserByEmail(email)==null){
